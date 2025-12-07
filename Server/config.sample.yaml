@@ -11,7 +11,7 @@ settings:
   remote_source_dir: "/home/pi/cctv_buffer"
   
   # 서버 내 영상 수집 경로 (이곳에 호스트별 폴더가 생성됨)
-  local_storage_dir: "/home/wcl/collection"
+  local_storage_dir: "/home/User/collection"
 
   # 한 번에 수집할 라즈베리파이 대수
   batch_size: 5
