@@ -10,9 +10,11 @@ if [ "$EUID" -ne 0 ]; then
 fi
 
 # 2. 작업 디렉토리 설정 (절대 경로 확보)
-REPO_DIR=$(pwd)
-SCRIPT_PATH="$REPO_DIR/Client/record.sh"
-SERVICE_SOURCE="$REPO_DIR/Client/rpi-cctv-client.service"
+SCRIPT_DIR=$(cd "$(dirname "$0")" && pwd)
+REPO_DIR=$(dirname "$SCRIPT_DIR") # 상위 폴더
+
+SCRIPT_PATH="$SCRIPT_DIR/record.sh"
+SERVICE_SOURCE="$SCRIPT_DIR/rpi-cctv-client.service"
 SERVICE_DEST="/etc/systemd/system/rpi-cctv-client.service"
 
 # 3. record.sh 실행 권한 부여
