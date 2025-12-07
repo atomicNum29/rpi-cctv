@@ -13,7 +13,7 @@ fi
 REPO_DIR=$(pwd)
 SCRIPT_PATH="$REPO_DIR/Client/record.sh"
 SERVICE_SOURCE="$REPO_DIR/Client/rpi-cctv-client.service"
-SERVICE_DEST="/etc/systemd/system/cctv.service"
+SERVICE_DEST="/etc/systemd/system/rpi-cctv-client.service"
 
 # 3. record.sh 실행 권한 부여
 chmod +x "$SCRIPT_PATH"
