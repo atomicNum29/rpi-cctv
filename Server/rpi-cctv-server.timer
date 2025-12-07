@@ -1,0 +1,10 @@
+[Unit]
+Description=Run CCTV Collection every 2 minutes
+
+[Timer]
+OnBootSec=1min
+
+OnCalendar=*:0/2
+
+[Install]
+WantedBy=timers.target

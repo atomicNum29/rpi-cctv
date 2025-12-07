@@ -1,0 +1,11 @@
+[Unit]
+Description=CCTV Collection One-shot Service
+After=network.target
+
+[Service]
+ExecStart=<python_path> <python_script_path>
+User=<Server_user>
+Type=oneshot
+
+[Install]
+WantedBy=multi-user.target

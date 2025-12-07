@@ -12,6 +12,21 @@ A multi-camera CCTV surveillance system based on Raspberry Pi. Designed with a c
 
 ---
 
+## Project Architecture
+
+* **Client (Raspberry Pi)**
+  - Captures video using the Raspberry Pi Camera
+  - Records video in 2-minute segments
+  - temporarily stores videos locally use RAM disk to minimize SD card wear
+* **Server (Ubuntu)**
+  - Collects video files from multiple RPi clients via SSH and rsync
+  - Uses multithreading to handle multiple clients concurrently
+  - Uses a SSH config file for easy host management
+  - Organizes videos by host and date
+  - Provides a foundation for future video management features
+
+---
+
 ## 📁 Project Structure
 ```
 rpi-cctv/
@@ -36,11 +51,9 @@ rpi-cctv/
 - **OS**: Raspberry Pi OS (Bookworm)
 
 ### Server
-- **OS**:
-- **CPU**:
-- **RAM**:
-- **Storage**:
-- **Network**:
+- **OS**: Ubuntu 24.04.3 LTS
+- **CPU**: Intel(R) Celeron(R) J4005 CPU @ 2.00GHz
+- **RAM**: 4GB
 
 ---
 
@@ -52,28 +65,53 @@ sudo ./Client/setup.sh
 ```
 
 ### Server Setup
+This system uses `Host Alias` instead of IP addresses. You need to configure the `~/.ssh/config` file. 
+also, edit the `Server/config.yaml` file to add your host aliases. this file generated automatically when you run the setup script.
 ```bash
-# Server setup commands (to be added)
+sudo ./Server/setup.sh
 ```
 
 ---
 
 ## 📝 Common Commands
+- **Client Side**
 
-### Check Recording Status
-```bash
-sudo systemctl status rpi-cctv-client
-```
+    ### Check Recording Status
+    ```bash
+    sudo systemctl status rpi-cctv-client
+    ```
 
-### View Logs
-```bash
-sudo journalctl -u rpi-cctv-client -f
-```
+    ### View Logs
+    ```bash
+    sudo journalctl -u rpi-cctv-client -f
+    ```
 
-### Restart Service
-```bash
-sudo systemctl restart rpi-cctv-client
-```
+    ### Restart Service
+    ```bash
+    sudo systemctl restart rpi-cctv-client
+    ```
+
+- **Server Side**
+
+    ### Check Collection Status
+    ```bash
+    sudo systemctl status rpi-cctv-server.service
+    ```
+
+    ### View Logs
+    ```bash
+    sudo journalctl -u rpi-cctv-server.service -f
+    ```
+
+    ### Restart Service
+    ```bash
+    sudo systemctl restart rpi-cctv-server.service
+    ```
+
+    ### Check Collection Timer
+    ```bash
+    sudo systemctl status rpi-cctv-server.timer
+    ```
 
 ---
 
