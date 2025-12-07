@@ -79,7 +79,7 @@ sudo systemctl restart rpi-cctv-client
 ---
 
 ## 📚 References
-- [Raspberry Pi Camera Software Official Documentation]([https://www.raspberrypi.org/documentation/](https://www.raspberrypi.com/documentation/computers/camera_software.html))
+- [Raspberry Pi Camera Software Official Documentation](https://www.raspberrypi.com/documentation/computers/camera_software.html)
 
 ---
 
