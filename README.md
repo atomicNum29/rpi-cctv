@@ -48,7 +48,6 @@ rpi-cctv/
 
 ### Client Setup
 ```bash
-chmod +x Client/setup.sh
 sudo ./Client/setup.sh
 ```
 
